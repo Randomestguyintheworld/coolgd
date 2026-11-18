@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CoolGD — Level Hub</title><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="background-grid"></div>
+  <header class="topbar">
+    <button class="brand" aria-label="Go home"><span class="cube">◆</span><strong>COOL<span>GD</span></strong></button>
+    <nav aria-label="Main navigation"><button class="nav-item active" data-view="home">Home</button><button class="nav-item" data-view="levels">Levels</button><button class="nav-item" data-view="leaderboard">Leaderboard</button></nav>
+    <div class="header-actions"><button id="themeToggle" class="icon-button" aria-label="Switch theme"><span>☀</span></button><button class="profile-button"><span class="avatar">R</span><span>Player</span></button></div>
+  </header>
+  <main>
+    <section id="homeView" class="view active">
+      <div class="hero"><div class="hero-copy"><p class="eyebrow">PLAY · CREATE · COMPETE</p><h1>Jump into the<br><span>rhythm.</span></h1><p class="hero-subtitle">Discover impossible levels, share your creations, and climb the global ranks.</p><div class="hero-actions"><button class="primary-button" id="playButton">▶ &nbsp; Play Now</button><button class="secondary-button" id="createButton">＋ &nbsp; Create</button></div></div><div class="hero-art" aria-hidden="true"><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="hero-cube"><div class="cube-face">◆</div></div><div class="pixel-trail"><i></i><i></i><i></i><i></i><i></i></div></div></div>
+      <div class="section-heading"><div><p class="eyebrow">FEATURED</p><h2>Trending levels</h2></div><button class="text-button" data-go="levels">View all <span>→</span></button></div>
+      <div class="level-grid" id="featuredLevels"></div>
+      <div class="stats-panel"><div><span class="stat-icon green">◆</span><div><strong>1,248</strong><small>Levels played</small></div></div><div><span class="stat-icon yellow">★</span><div><strong>86</strong><small>Stars earned</small></div></div><div><span class="stat-icon blue">▲</span><div><strong>#142</strong><small>Global rank</small></div></div></div>
+    </section>
+    <section id="levelsView" class="view"><div class="page-heading"><div><p class="eyebrow">EXPLORE</p><h2>Level browser</h2></div></div><div class="toolbar"><label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Search levels or creators"></label><select id="difficultyFilter"><option value="all">All difficulties</option><option>Easy</option><option>Normal</option><option>Hard</option><option>Insane</option><option>Demon</option></select></div><div class="level-grid" id="levelGrid"></div></section>
+    <section id="leaderboardView" class="view"><div class="page-heading"><div><p class="eyebrow">GLOBAL RANKINGS</p><h2>Leaderboard</h2></div></div><div class="leaderboard" id="leaderboard"></div></section>
+  </main>
+  <div class="toast" id="toast" role="status"></div><script src="app.js"></script>
+</body></html>
