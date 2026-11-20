@@ -1,0 +1,13 @@
+/* Gameplay refinements layered over the dashboard styles. */
+.orb { border-radius: 50%; }
+.game-shell { position: relative; overflow: hidden; }
+#gameCanvas { display: block; width: 100%; touch-action: none; }
+.game-overlay { z-index: 3; }
+.game-overlay.hidden { display: none; }
+#gameShell.shake { animation: game-shake .38s linear; }
+@keyframes game-shake { 0%,100%{transform:translateX(0)} 15%{transform:translateX(-9px)} 30%{transform:translateX(8px)} 45%{transform:translateX(-6px)} 60%{transform:translateX(5px)} 75%{transform:translateX(-3px)} }
+.play-level { margin-top: 14px; width: 100%; display:flex; justify-content:space-between; align-items:center; padding:10px 12px; border:0; border-radius:9px; color:#fff; background:var(--green); font-weight:800; }
+.cover-gem { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%) rotate(45deg); color:#fff; font-size:42px; text-shadow:3px 3px rgba(0,0,0,.2); }
+.game-help { display:flex; justify-content:space-between; gap:12px; color:var(--muted); font-size:13px; margin-top:12px; }
+.game-help kbd { display:inline-block; padding:3px 7px; border-radius:5px; background:var(--surface); border:1px solid var(--line); color:var(--text); font:inherit; font-weight:800; }
+@media(max-width:600px){.game-help{flex-direction:column}.play-level{min-height:42px}}
