@@ -6,35 +6,31 @@
   <meta name="theme-color" content="#111318">
   <title>CoolGD — Rhythm Platformer</title>
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="game-upgrades.css">
 </head>
 <body>
   <div class="background-grid" aria-hidden="true"></div>
   <header class="topbar">
-    <button class="brand" aria-label="CoolGD home"><span class="cube">◆</span><strong>COOL<span>GD</span></strong></button>
-    <nav aria-label="Main navigation"><button class="nav-item active" data-view="home">Home</button><button class="nav-item" data-view="levels">Levels</button><button class="nav-item" data-view="leaderboard">Leaderboard</button></nav>
-    <div class="header-actions"><button id="themeToggle" class="icon-button" aria-label="Switch theme"><span>☀</span></button><button class="profile-button" aria-label="Player profile"><span class="avatar">R</span><span>Player</span></button></div>
+    <button class="brand" type="button" aria-label="CoolGD home"><span class="cube">◆</span><strong>COOL<span>GD</span></strong></button>
+    <nav aria-label="Main navigation"><button class="nav-item active" data-view="home" type="button">Home</button><button class="nav-item" data-view="levels" type="button">Levels</button><button class="nav-item" data-view="leaderboard" type="button">Leaderboard</button></nav>
+    <div class="header-actions"><button id="muteToggle" class="icon-button" type="button" aria-label="Toggle audio">🔊</button><button id="themeToggle" class="icon-button" type="button" aria-label="Toggle theme">☀</button><button class="profile-button" type="button"><span class="avatar">P</span><span>Player</span></button></div>
   </header>
   <main>
     <section id="homeView" class="view active">
-      <div class="hero"><div class="hero-copy"><p class="eyebrow">JUMP · DODGE · REPEAT</p><h1>Your next<br><span>rhythm run.</span></h1><p class="hero-subtitle">Play three original, browser-based platforming challenges. Jump over hazards, reach the finish, and try again.</p><div class="hero-actions"><button class="primary-button" id="playButton">▶ &nbsp; Play a level</button><button class="secondary-button" id="createButton">✦ &nbsp; How to play</button></div></div><div class="hero-art" aria-hidden="true"><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="hero-cube"><div class="cube-face">◆</div></div><div class="pixel-trail"><i></i><i></i><i></i><i></i></div></div></div>
-      <div class="section-heading"><div><p class="eyebrow">PICK YOUR CHALLENGE</p><h2>Playable levels</h2></div><button class="text-button" data-go="levels">All levels <span>→</span></button></div>
-      <div class="level-grid" id="featuredLevels"></div>
-      <div class="stats-panel"><div><span class="stat-icon green">◆</span><div><strong>3</strong><small>Original levels</small></div></div><div><span class="stat-icon yellow">★</span><div><strong>∞</strong><small>Retry whenever</small></div></div><div><span class="stat-icon blue">▲</span><div><strong>100%</strong><small>Browser playable</small></div></div></div>
+      <div class="hero"><div class="hero-copy"><p class="eyebrow">JUMP · DODGE · REPEAT</p><h1>Your next <span>rhythm</span> run.</h1><p class="hero-subtitle">Play three original browser platforming challenges with jump pads, mid-air orbs, ship portals, and synthesized beats.</p><div class="hero-actions"><button id="playButton" class="primary-button" type="button">▶ Play a level</button><button id="createButton" class="secondary-button" type="button">✦ How to play</button></div></div><div class="hero-art" aria-hidden="true"><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="hero-cube"><div class="cube-face">◆</div></div><div class="pixel-trail"><i></i><i></i><i></i></div></div></div>
+      <div class="section-heading"><div><p class="eyebrow">PICK YOUR CHALLENGE</p><h2>Playable levels</h2></div><button class="text-button" data-go="levels" type="button">All levels <span>→</span></button></div>
+      <div id="featuredLevels" class="level-grid"></div>
+      <div class="stats-panel"><div><span class="stat-icon green">◆</span><div><strong>3 Original</strong><small>Playtested levels</small></div></div><div><span class="stat-icon yellow">★</span><div><strong>∞ Retries</strong><small>Instant respawn</small></div></div><div><span class="stat-icon blue">▲</span><div><strong>100% Web</strong><small>Zero setup needed</small></div></div></div>
     </section>
-    <section id="levelsView" class="view"><div class="page-heading"><div><p class="eyebrow">CHOOSE A RUN</p><h2>Level browser</h2></div></div><div class="toolbar"><label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Search levels or creators" aria-label="Search levels or creators"></label><select id="difficultyFilter" aria-label="Filter difficulty"><option value="all">All difficulties</option><option>Easy</option><option>Normal</option><option>Hard</option></select></div><div class="level-grid" id="levelGrid"></div></section>
-    <section id="leaderboardView" class="view"><div class="page-heading"><div><p class="eyebrow">FRIENDS & DEMO SCORES</p><h2>Leaderboard</h2></div></div><p class="muted-note">Sample scores for the demo — there is no online score server yet.</p><div class="leaderboard" id="leaderboard"></div></section>
+    <section id="levelsView" class="view"><div class="page-heading"><div><p class="eyebrow">CHOOSE A RUN</p><h2>Level browser</h2></div></div><div class="toolbar"><label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Search levels or creators..." aria-label="Search levels or creators"></label><select id="difficultyFilter" aria-label="Filter by difficulty"><option value="all">All difficulties</option><option value="Easy">Easy</option><option value="Normal">Normal</option><option value="Hard">Hard</option></select></div><div id="levelGrid" class="level-grid"></div></section>
+    <section id="leaderboardView" class="view"><div class="page-heading"><div><p class="eyebrow">FRIENDS &amp; DEMO SCORES</p><h2>Leaderboard</h2></div></div><p class="muted-note">Sample scores only — online multiplayer and score submissions are not enabled.</p><div id="leaderboard" class="leaderboard"></div></section>
     <section id="gameView" class="view game-view" aria-label="Playable level">
-      <div class="game-heading"><button class="back-button" id="backButton">← Back to levels</button><div><p class="eyebrow">ORIGINAL COOLGD GAME</p><h2 id="gameTitle">Loading level</h2></div><button class="secondary-button compact" id="restartButton">↻ Restart</button></div>
-      <div class="game-shell" id="gameShell">
-        <div class="game-status"><span id="gameMessage">Get ready</span><span class="progress-track"><span id="progressFill"></span></span><span id="progressText">0%</span></div>
-        <canvas id="gameCanvas" aria-label="Platform game. Press Space, Up, W, click, or hold touch to jump or fly."></canvas>
-        <div class="game-overlay" id="gameOverlay"><div class="overlay-card"><span class="overlay-icon" id="overlayIcon">◆</span><h3 id="overlayTitle">Ready?</h3><p id="overlayText">Jump over the hazards and reach the finish.</p><button class="primary-button" id="overlayButton">Start level</button></div></div>
-      </div>
-      <div class="game-help"><span><kbd>Space</kbd> <kbd>↑</kbd> <kbd>W</kbd> or click/tap to jump; hold in ship mode</span><span>Tap an orb while close to trigger a mid-air jump.</span></div>
+      <div class="game-header"><button id="backButton" class="secondary-button" type="button">← Back to levels</button><div class="game-meta"><p class="eyebrow">ORIGINAL COOLGD GAME</p><h2 id="gameTitle">Level</h2></div><button id="restartButton" class="secondary-button" type="button">↻ Restart</button></div>
+      <div class="progress-wrap"><span id="gameMessage">Get ready</span><div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div><span id="progressText">0%</span></div>
+      <div id="gameShell" class="canvas-shell"><canvas id="gameCanvas" aria-label="Game. Hold Space, Up, W, click, or touch to jump or fly."></canvas><div id="gameOverlay" class="game-overlay"><div id="overlayIcon" class="overlay-icon">◆</div><h3 id="overlayTitle">Ready?</h3><p id="overlayText">Jump over hazards and reach the finish.</p><button id="overlayButton" class="primary-button" type="button">Start level</button></div></div>
+      <p class="controls-hint">Hold <strong>Space</strong>, <strong>↑</strong>, <strong>W</strong>, or click/tap to jump · Tap near yellow orbs for a mid-air jump · Hold to fly in ship mode · <strong>Esc</strong> to pause</p>
     </section>
   </main>
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <script src="app.js"></script>
 </body>
 </html>
